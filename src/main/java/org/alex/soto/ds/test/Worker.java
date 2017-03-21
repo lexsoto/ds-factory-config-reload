@@ -17,7 +17,6 @@ public class Worker {
 	@Activate
 	public void init(Map<String, String> config) {
 		workToBeDone = config.get("work.to.be.done");
-		validate();
 		log.info("Activated WorkerImpl with job: " + workToBeDone);
 	}
 
@@ -27,20 +26,9 @@ public class Worker {
 		workToBeDone = null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.alex.soto.ds.test.WorkService#doWork()
-	 */
 	public String doWork() {
-		validate();
 		log.info("Doing work: {}.", workToBeDone);
 		return workToBeDone;
 	}
 
-	private void validate() {
-		// if (workToBeDone == null) {
-		// throw new RuntimeException("No work to be done configured.");
-		// }
-	}
 }
